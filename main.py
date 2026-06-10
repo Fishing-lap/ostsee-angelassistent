@@ -1,5 +1,6 @@
 from weather import lade_wetterdaten
 from marine import lade_marine_daten
+from windhistory import windhistorie_score
 
 LAT = 54.16
 LON = 11.95
@@ -117,6 +118,11 @@ for i in range(len(daily["time"])):
         bewertung = "MITTEL"
     else:
         bewertung = "SCHWACH"
+
+    punkte_hist, text_hist = windhistorie_score()
+
+    score += punkte_hist
+    gruende.append(text_hist)
 
     tage.append({
         "datum": daily["time"][i],
